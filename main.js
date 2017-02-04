@@ -6,6 +6,9 @@ var mainState = {
 
     //load the bird sprite
     game.load.image('bird', 'assets/bird.png');
+
+    //load pipe
+    game.load.image('pipe', 'assets/pipe.png');
   },
   create: function() {
     //Called after preload
@@ -17,6 +20,8 @@ var mainState = {
     //set physics system
     game.physics.startSystem(Phaser.Physics.ARCADE)
 
+    //create an empty group
+    this.pipes = game.add.group();
     //display the bird at the position x=100 y =245
     this.bird = game.add.sprite(100, 245, 'bird');
 
@@ -30,6 +35,9 @@ var mainState = {
     //call jump when space is hit
     var spaceBar = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
     spaceBar.onDown.add(this.jump, this);
+
+    //timer add row of pipes every 1.5 seconds
+    this.timer = game.time.events.loop(1500, this.addRowOfPipes, this);
   },
   update: function() {
     //This is called 60 times per second
@@ -44,6 +52,34 @@ var mainState = {
   jump: function() {
     //add a verticaal velocity 2 bird
     this.bird.body.velocity.y = -350;
+  },
+
+  addOnePipe: function(x,y) {
+    //create a pipe at a position x, y
+    var pipe = game.add.sprite(x, y,'pipe');
+
+    //add pipe 2 pipe gruop
+    this.pipes.add(pipe);
+
+    //enable physics on pipe
+    game.physics.arcade.enable(pipe);
+
+    //add velocity 2 pipe
+    pipe.body.velocity.x = -200;
+
+    //aouto kill pipe when no scrreeen
+    pipe.checkWorldBounds = true;
+    pipe.outOfBoundsKill = true;
+  },
+
+  addRowOfPipes: function() {
+    //random pick # btween 1,5. this bbe hole pos.
+    var hole = Math.floor(Math.random()*5)+1;
+    for (var i = 0; i < 0; i++) {
+      if (i != hole && i !=hole+1) {
+        this.addOnePipe(400, i * 60 +10);
+      }
+    }
   },
 
   //rstart the game
