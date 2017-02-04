@@ -28,7 +28,7 @@ var mainState = {
     this.bird.body.gravity.y = 1000;
 
     //call jump when space is hit
-    var spaceBar = game.input.keyboard.addkey(Phaser.Keyboard.SPACEBAR);
+    var spaceBar = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
     spaceBar.onDown.add(this.jump, this);
   },
   update: function() {
