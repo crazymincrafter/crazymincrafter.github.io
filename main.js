@@ -22,7 +22,7 @@ var mainState = {
 
     //add physics to bird
     //for movements, gravity , collisions, etc.
-    game.physica.arcade.enable(this.bird);
+    game.physics.arcade.enable(this.bird);
 
     //add gravity 2 bird
     this.bird.gravity.y = 1000;
