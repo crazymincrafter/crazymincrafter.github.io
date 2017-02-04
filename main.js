@@ -38,6 +38,11 @@ var mainState = {
 
     //timer add row of pipes every 1.5 seconds
     this.timer = game.time.events.loop(1500, this.addRowOfPipes, this);
+
+    //this keeps score
+    this.score = 0;
+    this.labelScore = game.add.text(20, 20, "0",
+      { font: "30px Arial", fill: "#ffffff"});
   },
   update: function() {
     //This is called 60 times per second
@@ -46,6 +51,10 @@ var mainState = {
     //If the bird is out oof scrreeen call game restart
     if(this.bird.y <0 || this.bird.y >490)
       this.restartGame();
+
+    //restart if touch pip
+    game.physics.arcade.overlap(
+      this.bird, this.pipes, this.restartGame, null, this);
   },
 
   //makes the bird jump
@@ -75,11 +84,13 @@ var mainState = {
   addRowOfPipes: function() {
     //random pick # btween 1,5. this bbe hole pos.
     var hole = Math.floor(Math.random()*5)+1;
-    for (var i = 0; i < 0; i++) {
+    for (var i = 0; i < 8; i++) {
       if (i != hole && i !=hole+1) {
         this.addOnePipe(400, i * 60 +10);
       }
     }
+    this.score += 1;
+    this.labelScore.text = this.score;
   },
 
   //rstart the game
