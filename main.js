@@ -136,10 +136,10 @@ var mainState = {
     }, this);
 
 
-  }
+  },
 
   //rstart the game
-  restartGame: function(){
+  restartGame: function (){
     //start main state
     game.state.start('main');
   }
