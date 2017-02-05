@@ -4,6 +4,23 @@ canvas {
 }
 
 h1 {
-  color: blue;
+  color: yellow;
   text-align: center;
+  font-size: 48px;
+}
+body {
+  background-image: url("https://s-media-cache-ak0.pinimg.com/originals/66/cc/83/66cc83ee121146c271339bb85db4ad35.png");
+}
+.about {
+  color: #ff0000;
+  font-size: 30px;
+  background-color: #ffffff;
+}
+.avatar {
+  border-radius: 50%;
+}
+.avatardiscription {
+  width:212px;
+  margin-right: auto;
+  margin-left: auto;
 }
