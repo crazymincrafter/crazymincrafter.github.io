@@ -29,6 +29,9 @@ var mainState = {
     //for movements, gravity , collisions, etc.
     game.physics.arcade.enable(this.bird);
 
+    //change ancor for bird to middle back
+    this.bird.anchor.setTo(-0.2, 0.5);
+
     //add gravity 2 bird
     this.bird.body.gravity.y = 1000;
 
@@ -58,11 +61,16 @@ var mainState = {
 
     //restart if touch pip
     game.physics.arcade.overlap(
-      this.bird, this.pipes, this.restartGame, null, this);
+      this.bird, this.pipes, this.hitPipe, null, this);
   },
 
   //makes the bird jump
   jump: function() {
+    //dont yump when deed
+    if(this.bird.alive == false){
+      return;
+    }
+
     //add a verticaal velocity 2 bird
     this.bird.body.velocity.y = -350;
 
@@ -108,6 +116,27 @@ var mainState = {
     this.score += 1;
     this.labelScore.text = this.score;
   },
+
+  //animation of DEATH!
+  hitPipe: function (){
+    //if the bird is dead do nothin
+    if (this.bird.alive == false){
+      return;
+    }
+
+    //make bird deed
+    this.bird.alive = false;
+
+    //stop timer; stop pips
+    game.time.events.remove(this.timer);
+
+    //STOP ZE pips that er on zcreen
+    this.pipes.forEach(function(lol){
+        lol.body.velocity.x = 0;
+    }, this);
+
+
+  }
 
   //rstart the game
   restartGame: function(){
