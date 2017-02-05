@@ -48,6 +48,10 @@ var mainState = {
     //This is called 60 times per second
     //It contains logic
 
+    //the anglewill cjange as the jump happenz
+    if(this.bird.angle < 20)
+      this.bird.angle += 3
+
     //If the bird is out oof scrreeen call game restart
     if(this.bird.y <0 || this.bird.y >490)
       this.restartGame();
@@ -61,6 +65,15 @@ var mainState = {
   jump: function() {
     //add a verticaal velocity 2 bird
     this.bird.body.velocity.y = -350;
+
+    //add angl to juymp and add animation
+    var animation = game.add.tween(this.bird);
+
+    //chang angl to -20 degreez for 100 milsecondz
+    animation.to({angle: -20}, 100);
+
+    //start anime
+    animation.start();
   },
 
   addOnePipe: function(x,y) {
