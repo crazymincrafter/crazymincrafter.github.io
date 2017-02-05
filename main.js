@@ -21,9 +21,7 @@ var mainState = {
 
     //background musiic
     this.music = game.add.audio('music', 1, false);
-    if(this.bird.alive == false)
-      this.music.stop();
-
+    this.music.stop();
     this.music.play();
 
     //change background blue
