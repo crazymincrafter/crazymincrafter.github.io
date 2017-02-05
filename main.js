@@ -9,6 +9,9 @@ var mainState = {
 
     //load pipe
     game.load.image('pipe', 'assets/pipe.png');
+
+    //load sound effetc fo yump
+    game.load.audio('bounce', 'assets/bounce.wav');
   },
   create: function() {
     //Called after preload
@@ -24,6 +27,9 @@ var mainState = {
     this.pipes = game.add.group();
     //display the bird at the position x=100 y =245
     this.bird = game.add.sprite(100, 245, 'bird');
+
+    //bonce sound
+    this.bounceSound = game.add.audio('bounce');
 
     //add physics to bird
     //for movements, gravity , collisions, etc.
@@ -71,6 +77,9 @@ var mainState = {
       return;
     }
 
+    //bounce sound
+    this.bounceSound.play();
+    
     //add a verticaal velocity 2 bird
     this.bird.body.velocity.y = -350;
 
