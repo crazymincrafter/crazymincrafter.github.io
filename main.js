@@ -12,11 +12,17 @@ var mainState = {
 
     //load sound effetc fo yump
     game.load.audio('bounce', 'assets/bounce.wav');
+    //load backgroud sound fo playerz
+    game.load.audio('music', 'assets/undertaleDummy.mp3');
   },
   create: function() {
     //Called after preload
     //Set up display ,sprite ect
 
+    //background musiic
+    this.music = game.add.audio('music');
+    this.music.play();
+    
     //change background blue
     game.stage.backgroundColor = '#44abe0';
 
@@ -79,7 +85,7 @@ var mainState = {
 
     //bounce sound
     this.bounceSound.play();
-    
+
     //add a verticaal velocity 2 bird
     this.bird.body.velocity.y = -350;
 
