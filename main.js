@@ -74,6 +74,9 @@ var mainState = {
 
     //start anime
     animation.start();
+
+    //here is another way to wright angle animation
+    //game.add.tween(this.bird).to({angle: -20}, 100).start();
   },
 
   addOnePipe: function(x,y) {
