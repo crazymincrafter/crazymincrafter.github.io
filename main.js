@@ -21,7 +21,7 @@ var mainState = {
 
     //background musiic
     this.music = game.add.audio('music', 1, false);
-    this.music.stop();
+    this.game.sound.stopAll();
     this.music.play();
 
     //change background blue
