@@ -167,7 +167,7 @@ var mainState = {
 var game = new Phaser.Game(400, 490);
 
 //add the mainState and call it main
-game.state.add('main', mainState);
+game.state.add(mainState);
 
 //Start the state to actually start the game
-game.state.start('main');
+game.state.start(mainState);
