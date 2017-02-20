@@ -20,7 +20,7 @@ var mainState = {
     //Set up display ,sprite ect
 
     //background musiic
-    this.music = game.add.audio('music', 1, false);
+    this.music = game.add.audio('music', 99, true);
     this.game.sound.stopAll();
     this.music.play();
 
@@ -49,7 +49,7 @@ var mainState = {
     this.bird.body.gravity.y = 1000;
 
     //call jump when space is hit
-    var spaceBar = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+    var spaceBar = game.input.keyboard.addKey(Phaser.Keyboard.UP);
     spaceBar.onDown.add(this.jump, this);
 
     //timer add row of pipes every 1.5 seconds
