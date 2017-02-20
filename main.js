@@ -20,7 +20,7 @@ var mainState = {
     //Set up display ,sprite ect
 
     //background musiic
-    this.music = game.add.audio('music', 99, true);
+    this.music = game.add.audio('music', 1, true);
     this.game.sound.stopAll();
     this.music.play();
 
